@@ -27,6 +27,12 @@
     <ClInclude Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="..\LegacyCppSrc\ClsA\ClsA.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LegacyCppSrc\ClsB\ClsB.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LegacyCpp2DotNetAssemblyDll.cpp">
@@ -36,6 +42,15 @@
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LegacyCppSrc\ClsA\ClsA.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LegacyCppSrc\ClsB\ClsB.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>

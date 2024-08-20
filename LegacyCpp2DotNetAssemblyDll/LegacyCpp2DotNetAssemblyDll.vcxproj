@@ -76,7 +76,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -119,12 +119,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\LegacyCppSrc\ClsA\ClsA.h" />
+    <ClInclude Include="..\LegacyCppSrc\ClsB\ClsB.h" />
     <ClInclude Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.h" />
     <ClInclude Include="LegacyCpp2DotNetAssemblyDll.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\LegacyCppSrc\ClsA\ClsA.cpp" />
+    <ClCompile Include="..\LegacyCppSrc\ClsB\ClsB.cpp" />
+    <ClCompile Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="LegacyCpp2DotNetAssemblyDll.cpp" />
     <ClCompile Include="pch.cpp">

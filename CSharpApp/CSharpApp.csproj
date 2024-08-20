@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="LegacyCpp2DotNetAssemblyDll.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="LegacyCpp2DotNetAssemblyDll">
       <HintPath>..\x64\Debug\LegacyCpp2DotNetAssemblyDll.dll</HintPath>
     </Reference>
