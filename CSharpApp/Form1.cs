@@ -28,12 +28,15 @@ namespace CSharpApp
         {
             MyLegacyClassWrapper c1 = new();       // default constructor
             MyLegacyClassWrapper c2 = new(10, 20); // constructor with parameters
-            MyLegacyClassWrapper c3 = new(30, 40); // default constructor
+            MyLegacyClassWrapper c3 = new(30, 40); // constructor with parameters
             label1.Text = c1.Calc().ToString() + ", " + c2.Calc().ToString() + ", " + c3.Calc().ToString();
 
-            c3 = c1.Set(c2); //
-            c2.Set(70, 80);
+            c3 = c1.Set(c2); // parse c2 object to c1 object, and return c1 object
+            c1.Set(50, 60);  // change c1 object value, but no effect on c3 object
+            c2.Set(70, 80);  // change c2 object value, but no effect on c3 object
             label2.Text = c1.Calc().ToString() + ", " + c2.Calc().ToString() + ", " + c3.Calc().ToString();
+
+            c3.Set(1, 1); // try to use c3 object to check c3 object is alive or not
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -52,6 +55,8 @@ namespace CSharpApp
             a.SetValue(44);
             b1.SetValue(55);
             label2.Text = a.GetValue().ToString() + ", " + b1.GetValue().ToString() + ", " + b2.GetValue().ToString();
+
+            b2.SetValue(66); // try to use b2 object to check b2 object is alive or not
         }
     }
 }
