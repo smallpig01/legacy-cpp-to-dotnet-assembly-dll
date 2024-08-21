@@ -23,17 +23,18 @@ LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::MyLegacyClassWrapper(int a,
 LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper ^
     LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::Set(
         MyLegacyClassWrapper ^ myLegacyClass) {
-  // the correct process to recall legacy class method
-  MyLegacyClass tempClass = myLegacyClass_->Set(*(
-      myLegacyClass->myLegacyClass_));  // create a c-class object to recieve
-                                        // the legacy class method return object
-  MyLegacyClassWrapper ^ tempWrapper = gcnew MyLegacyClassWrapper(
-      &tempClass);  // create a new wrapper object by passing the c-class object
-  return tempWrapper;  // return the wrapper object
+  // clang-format off
+  // the correct process of wrapper invoking legacy class
+  // create a c-class object to recieve the legacy class method return object
+  MyLegacyClass tempClass = myLegacyClass_->Set( *(myLegacyClass->myLegacyClass_) );
+  // create a new wrapper object by passing the c-class object
+  MyLegacyClassWrapper ^ tempWrapper = gcnew MyLegacyClassWrapper( &tempClass );
+  // return the wrapper object
+  return tempWrapper;
 
   // or use one-line style to retun MyLegacyClassWrapper ^ object
-  // return gcnew
-  // MyLegacyClassWrapper(&(myLegacyClass_->Set(*(myLegacyClass->myLegacyClass_))));
+  // return gcnew MyLegacyClassWrapper(&(myLegacyClass_->Set(*(myLegacyClass->myLegacyClass_))));
+  // clang-format on
 }
 
 void LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::Set(int a, int b) {
@@ -54,16 +55,18 @@ LegacyCpp2DotNetAssemblyDll::ClsAWrapper::~ClsAWrapper() { delete clsA_; }
 
 LegacyCpp2DotNetAssemblyDll::ClsBWrapper ^
     LegacyCpp2DotNetAssemblyDll::ClsAWrapper::Foo(ClsBWrapper ^ b) {
-  // the correct process to recall legacy class method
-  ClsB tmepClass = clsA_->Foo(
-      *(b->GetCppObject()));  // create a c-class object to recieve the legacy
-                              // class method return object
-  ClsBWrapper ^ tempWrapper = gcnew ClsBWrapper(
-      &tmepClass);  // create a new wrapper object by passing the c-class object
-  return tempWrapper;  // return the wrapper object
+  // clang-format off
+  // the correct process of wrapper invoking legacy class
+  // create a c-class object to recieve the return object of legacy class method
+  ClsB tmepClass = clsA_->Foo( *(b->GetCppObject()) );
+  // create a new wrapper object by passing the c-class object
+  ClsBWrapper ^ tempWrapper = gcnew ClsBWrapper( &tmepClass );
+  // return the wrapper object
+  return tempWrapper;  
 
   // use the one-line call method to avoid the object life cycle issues
   // return gcnew ClsBWrapper(&(clsA_->Foo(*(b->GetCppObject()))));
+  // clang-format on
 }
 
 int LegacyCpp2DotNetAssemblyDll::ClsAWrapper::GetValue() {
