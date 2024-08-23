@@ -9,3 +9,8 @@ MyLegacyClass MyLegacyClass::Set(MyLegacyClass& myLegacyClass) {
   *this = myLegacyClass;
   return *this;
 }
+
+MyLegacyClass MyLegacyClass::Get(MyLegacyClass& myLegacyClass) {
+  myLegacyClass = *this;
+  return myLegacyClass;
+}

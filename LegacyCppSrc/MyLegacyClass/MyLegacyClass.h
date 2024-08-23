@@ -7,6 +7,7 @@ class MyLegacyClass {
   int Calc() const { return a_ + b_; }
   void Set(int a, int b);
   MyLegacyClass Set(MyLegacyClass& myLegacyClass);
+  MyLegacyClass Get(MyLegacyClass& myLegacyClass);
 
  private:
   int a_ = 0;

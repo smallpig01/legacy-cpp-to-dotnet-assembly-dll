@@ -37,6 +37,14 @@ LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper ^
   // clang-format on
 }
 
+LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper ^
+    LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::Get(
+        MyLegacyClassWrapper ^ myLegacyClass) {
+  // use one-line style to retun MyLegacyClassWrapper ^ object
+  return gcnew MyLegacyClassWrapper(
+      &(myLegacyClass_->Get(*(myLegacyClass->myLegacyClass_))));
+}
+
 void LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::Set(int a, int b) {
   myLegacyClass_->Set(a, b);
 }

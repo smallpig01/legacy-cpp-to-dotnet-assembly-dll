@@ -23,6 +23,7 @@ ref class MyLegacyClassWrapper {
   ~MyLegacyClassWrapper();
   MyLegacyClassWrapper(int a, int b);
   MyLegacyClassWrapper ^ Set(MyLegacyClassWrapper ^ myLegacyClass);
+  MyLegacyClassWrapper ^ Get(MyLegacyClassWrapper ^ myLegacyClass);
   void Set(int a, int b);
   int Calc();
 

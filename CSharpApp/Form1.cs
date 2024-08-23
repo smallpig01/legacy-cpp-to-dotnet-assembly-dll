@@ -58,5 +58,24 @@ namespace CSharpApp
 
             b2.SetValue(66); // try to use b2 object to check b2 object is alive or not
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // create 3 object and set separated values
+            LegacyCpp2DotNetAssemblyDll.MyLegacyClassWrapper c1 = new(10, 10);
+            LegacyCpp2DotNetAssemblyDll.MyLegacyClassWrapper c2 = new(20, 20);
+            LegacyCpp2DotNetAssemblyDll.MyLegacyClassWrapper c3 = new(30, 30);
+            label1.Text = c1.Calc().ToString() + ", " + c2.Calc().ToString() + ", " + c3.Calc().ToString();
+
+            // send c2 to get c1 value, and revieve the c2 into c3
+            c3 = c1.Get(c2);
+            label2.Text = c1.Calc().ToString() + ", " + c2.Calc().ToString() + ", " + c3.Calc().ToString();
+
+            // test whether C1, C2, C3 are separate objects
+            c1.Set(40, 40);
+            c2.Set(50, 50);
+            c3.Set(60, 60);
+            label3.Text = c1.Calc().ToString() + ", " + c2.Calc().ToString() + ", " + c3.Calc().ToString();
+        }
     }
 }
