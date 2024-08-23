@@ -64,3 +64,13 @@ ref class ClsBWrapper {
   ClsB* clsB_;
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll
+
+// Wrapper class for CArrayTools
+namespace LegacyCpp2DotNetAssemblyDll {
+public
+ref class CArrayToolsWrapper {
+ public:
+  // static method to find the maximum value in an array
+  static float Max(array<float> ^ arr);
+};
+}  // namespace LegacyCpp2DotNetAssemblyDll

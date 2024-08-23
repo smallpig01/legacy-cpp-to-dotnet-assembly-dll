@@ -77,5 +77,14 @@ namespace CSharpApp
             c3.Set(60, 60);
             label3.Text = c1.Calc().ToString() + ", " + c2.Calc().ToString() + ", " + c3.Calc().ToString();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // create a array set values
+            float[] array = new float[] { 1.1f, 2.2f, 9.9f, 4.4f, 5.5f };
+            // use CArrayToolsWrapper static function to get the max value of array
+            float max = LegacyCpp2DotNetAssemblyDll.CArrayToolsWrapper.Max(array);
+            label1.Text = max.ToString();
+        }
     }
 }

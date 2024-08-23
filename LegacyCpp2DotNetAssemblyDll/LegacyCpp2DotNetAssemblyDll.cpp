@@ -108,3 +108,11 @@ void LegacyCpp2DotNetAssemblyDll::ClsBWrapper::SetValue(int value) {
 }
 
 ClsB* LegacyCpp2DotNetAssemblyDll::ClsBWrapper::GetCppObject() { return clsB_; }
+
+float LegacyCpp2DotNetAssemblyDll::CArrayToolsWrapper::Max(array<float> ^ arr) {
+  // convert managed array to unmanaged array
+  pin_ptr<float> p = &arr[0];
+  // the other option is Marshal::Copy(...)
+  // use umanaged array pointer, to call the legacy class method
+  return CArrayTools::Max(p, arr->Length);
+}

@@ -13,3 +13,8 @@ class MyLegacyClass {
   int a_ = 0;
   int b_ = 0;
 };
+
+class CArrayTools {
+ public:
+  static float Max(float arr[], int size);
+};
