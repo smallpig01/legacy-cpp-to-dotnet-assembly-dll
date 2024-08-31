@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="..\LegacyCppSrc\ClsA\ClsA.h" />
     <ClInclude Include="..\LegacyCppSrc\ClsB\ClsB.h" />
+    <ClInclude Include="..\LegacyCppSrc\EnumList\EnumList.h" />
     <ClInclude Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.h" />
     <ClInclude Include="LegacyCpp2DotNetAssemblyDll.h" />
     <ClInclude Include="pch.h" />
@@ -129,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="..\LegacyCppSrc\ClsA\ClsA.cpp" />
     <ClCompile Include="..\LegacyCppSrc\ClsB\ClsB.cpp" />
+    <ClCompile Include="..\LegacyCppSrc\EnumList\EnumList.cpp" />
     <ClCompile Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="LegacyCpp2DotNetAssemblyDll.cpp" />

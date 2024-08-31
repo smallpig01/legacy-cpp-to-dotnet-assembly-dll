@@ -5,6 +5,7 @@ using namespace System;
 // inlude legacy class header
 #include "../LegacyCppSrc/ClsA/ClsA.h"
 #include "../LegacyCppSrc/ClsB/ClsB.h"
+#include "../LegacyCppSrc/EnumList/EnumList.h"
 #include "../LegacyCppSrc/MyLegacyClass/MyLegacyClass.h"
 
 // forward declare
@@ -72,5 +73,16 @@ ref class CArrayToolsWrapper {
  public:
   // static method to find the maximum value in an array
   static float Max(array<float> ^ arr);
+};
+}  // namespace LegacyCpp2DotNetAssemblyDll
+
+// Wrapper class for EnumList
+namespace LegacyCpp2DotNetAssemblyDll {
+public
+enum class MyEnum {
+  A = EnumList::A,
+  B = EnumList::B,
+  C = EnumList::C,
+  D = EnumList::D
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll
