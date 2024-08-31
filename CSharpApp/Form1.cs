@@ -86,5 +86,26 @@ namespace CSharpApp
             float max = LegacyCpp2DotNetAssemblyDll.CArrayToolsWrapper.Max(array);
             label1.Text = max.ToString();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // ptrint MyEnum.B int/hex/bin value
+            int int_b = (int)MyEnum.B;
+            string hex_b = "0x" + Convert.ToString((int)MyEnum.B, 16).PadLeft(4, '0');
+            string bin_b = "0b" + Convert.ToString((int)MyEnum.B, 2).PadLeft(4, '0');
+            label1.Text = "MyEnum.B =           " + int_b.ToString() + ", " + hex_b.ToString() + ", " + bin_b.ToString();
+
+            // ptrint MyEnum.D int/hex/bin value
+            int int_d = (int)MyEnum.D;
+            string hex_d = "0x" + Convert.ToString((int)MyEnum.D, 16).PadLeft(4, '0');
+            string bin_d = "0b" + Convert.ToString((int)MyEnum.D, 2).PadLeft(4, '0');
+            label2.Text = "MyEnum.D =          " + int_d.ToString() + ", " + hex_d.ToString() + ", " + bin_d.ToString();
+
+            // bit operation of B and D, and print int/hex/bin value
+            MyEnum EnumBitOperation = (MyEnum.B | MyEnum.D);
+            string hex_bd = "0x" + Convert.ToString((long)EnumBitOperation, 16).PadLeft(4, '0');
+            string bin_bd = "0b" + Convert.ToString((long)EnumBitOperation, 2).PadLeft(4, '0');
+            label3.Text = "MyEnum .B | .D = " + EnumBitOperation.ToString() + ", " + hex_bd.ToString() + ", " + bin_bd.ToString();
+        }
     }
 }
