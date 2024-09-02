@@ -1,12 +1,18 @@
 ﻿#pragma once
 
+// include C++/CLI header
+#include <msclr/marshal_cppstd.h>
+
 using namespace System;
+using namespace System::Runtime::InteropServices;
+using namespace msclr::interop;
 
 // inlude legacy class header
 #include "../LegacyCppSrc/ClsA/ClsA.h"
 #include "../LegacyCppSrc/ClsB/ClsB.h"
 #include "../LegacyCppSrc/EnumList/EnumList.h"
 #include "../LegacyCppSrc/MyLegacyClass/MyLegacyClass.h"
+#include "../LegacyCppSrc/MyStringChar/MyStringChar.h"
 
 // forward declare
 namespace LegacyCpp2DotNetAssemblyDll {
@@ -84,5 +90,23 @@ enum class MyEnum {
   B = EnumList::B,
   C = EnumList::C,
   D = EnumList::D
+};
+}  // namespace LegacyCpp2DotNetAssemblyDll
+
+// Wrapper class for MyStringChar
+namespace LegacyCpp2DotNetAssemblyDll {
+public
+ref class MyStringCharWrapper {
+ public:
+  MyStringCharWrapper();
+  MyStringCharWrapper(MyStringChar* my_string_char);
+  ~MyStringCharWrapper();
+  void SetDataString(String ^ str);
+  void SetDataChar(String ^ str);
+  String ^ GetDataString();
+  String ^ GetDataChar();
+
+ private:
+  MyStringChar* my_string_char_;
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll
