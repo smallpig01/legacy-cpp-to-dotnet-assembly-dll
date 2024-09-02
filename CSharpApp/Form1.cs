@@ -107,5 +107,23 @@ namespace CSharpApp
             string bin_bd = "0b" + Convert.ToString((long)EnumBitOperation, 2).PadLeft(4, '0');
             label3.Text = "MyEnum .B | .D = " + EnumBitOperation.ToString() + ", " + hex_bd.ToString() + ", " + bin_bd.ToString();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MyStringCharWrapper myStringCharWrapper = new();
+            string intput_str, optput_str;
+
+            // System::String and std::string interconverting
+            intput_str = "System::String and std::string interconverting!!";
+            myStringCharWrapper.SetDataString(intput_str);
+            optput_str = myStringCharWrapper.GetDataString();
+            label1.Text = optput_str;
+
+            // System::String and char* interconverting
+            intput_str = "System::String and char* interconverting!!";
+            myStringCharWrapper.SetDataChar(intput_str);
+            optput_str = myStringCharWrapper.GetDataChar();
+            label2.Text = optput_str;
+        }
     }
 }

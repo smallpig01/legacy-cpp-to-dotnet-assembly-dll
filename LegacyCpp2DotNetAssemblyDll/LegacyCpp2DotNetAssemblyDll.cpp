@@ -116,3 +116,54 @@ float LegacyCpp2DotNetAssemblyDll::CArrayToolsWrapper::Max(array<float> ^ arr) {
   // use umanaged array pointer, to call the legacy class method
   return CArrayTools::Max(p, arr->Length);
 }
+
+LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::MyStringCharWrapper() {
+  my_string_char_ = new MyStringChar();
+}
+
+LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::MyStringCharWrapper(
+    MyStringChar* my_string_char) {
+  my_string_char_ = new MyStringChar(*my_string_char);
+}
+
+LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::~MyStringCharWrapper() {
+  delete my_string_char_;
+}
+
+void LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::SetDataString(String ^
+                                                                     str) {
+  // convert System::String to std::string
+  marshal_context context;
+  std::string std_string = context.marshal_as<std::string>(str);
+  // call the legacy class method
+  my_string_char_->SetDataString(std_string);
+}
+
+void LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::SetDataChar(String ^
+                                                                   str) {
+  // convert System::String to unmanaged char array
+  marshal_context context;
+  const char* char_arr = context.marshal_as<const char*>(str);
+  // call the legacy class method
+  my_string_char_->SetDataChar(char_arr);
+}
+
+String ^ LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::GetDataString() {
+  // call the legacy class method
+  std::string std_string = my_string_char_->GetDataString();
+  // convert std::string to System::String
+  marshal_context context;
+  System::String ^ system_string =
+      context.marshal_as<System::String ^>(std_string);
+  return system_string;
+}
+
+String ^ LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::GetDataChar() {
+  // call the legacy class method
+  const char* char_arr = my_string_char_->GetDataChar();
+  // convert char* to System::String
+  marshal_context context;
+  System::String ^ system_string =
+      context.marshal_as<System::String ^>(char_arr);
+  return system_string;
+}
