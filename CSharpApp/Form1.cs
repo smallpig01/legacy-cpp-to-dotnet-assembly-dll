@@ -125,5 +125,21 @@ namespace CSharpApp
             optput_str = myStringCharWrapper.GetDataChar();
             label2.Text = optput_str;
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // create a int {1,2,3,4,5} array
+            int[] src_array = new int[] { 1, 2, 3, 4, 5 };
+            label1.Text = "src_arr = " + string.Join(", ", src_array);
+
+            // use MyStdVectorWrapper.RevertVector to get the reverted array
+            int[] dst_array = MyStdVectorWrapper.RevertVector(src_array);
+            label2.Text = "src_arr = " + string.Join(", ", src_array) + "; dst_arr = " + string.Join(", ", dst_array);
+
+            // change the src_array to {10} and dst_array to {20}
+            src_array[0] = 1; src_array[1] = 1; src_array[2] = 1; src_array[3] = 1; src_array[4] = 1;
+            dst_array[0] = 2; dst_array[1] = 2; dst_array[2] = 2; dst_array[3] = 2; dst_array[4] = 2;
+            label3.Text = "src_arr = " + string.Join(", ", src_array) + "; dst_arr = " + string.Join(", ", dst_array);
+        }
     }
 }
