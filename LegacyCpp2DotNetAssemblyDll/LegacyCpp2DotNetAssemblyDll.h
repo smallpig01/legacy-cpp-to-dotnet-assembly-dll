@@ -12,6 +12,7 @@ using namespace msclr::interop;
 #include "../LegacyCppSrc/ClsB/ClsB.h"
 #include "../LegacyCppSrc/EnumList/EnumList.h"
 #include "../LegacyCppSrc/MyLegacyClass/MyLegacyClass.h"
+#include "../LegacyCppSrc/MyStdVector/MyStdVector.h"
 #include "../LegacyCppSrc/MyStringChar/MyStringChar.h"
 
 // forward declare
@@ -108,5 +109,14 @@ ref class MyStringCharWrapper {
 
  private:
   MyStringChar* my_string_char_;
+};
+}  // namespace LegacyCpp2DotNetAssemblyDll
+
+// Wrapper class for MyStdVector
+namespace LegacyCpp2DotNetAssemblyDll {
+public
+ref class MyStdVectorWrapper {
+ public:
+  static array<int> ^ RevertVector(array<int> ^ cs_arr);
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll

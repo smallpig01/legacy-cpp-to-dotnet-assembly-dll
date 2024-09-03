@@ -167,3 +167,28 @@ String ^ LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::GetDataChar() {
       context.marshal_as<System::String ^>(char_arr);
   return system_string;
 }
+
+array<int> ^
+    LegacyCpp2DotNetAssemblyDll::MyStdVectorWrapper::RevertVector(array<int> ^
+                                                                  cs_arr) {
+  // use Marshal::Copy to implemtent C++ std::vector and cs array conversion
+  // convert managed cs array to unmanaged std::vector
+  pin_ptr<int> src_arr_ptr = &cs_arr[0];
+  std::vector<int> src_std_vect(cs_arr->Length);
+  Marshal::Copy(cs_arr, 0, (IntPtr)src_std_vect.data(), cs_arr->Length);
+
+  // call the legacy class method
+  std::vector<int> reversed_vect = MyStdVector::RevertVector(src_std_vect);
+
+  // convert unmanaged std::vector to managed cs array
+  // copy convert src_std_vect back to sec_cs_array
+  int src_std_vect_length = static_cast<int>(src_std_vect.size());
+  Marshal::Copy((IntPtr)src_std_vect.data(), cs_arr, 0, src_std_vect_length);
+
+  // create a managed array result and copy convert reversed_vect into it
+  int reversed_vect_length = static_cast<int>(reversed_vect.size());
+  array<int> ^ result = gcnew array<int>(reversed_vect_length);
+  Marshal::Copy((IntPtr)reversed_vect.data(), result, 0, reversed_vect_length);
+
+  return result;
+}
