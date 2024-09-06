@@ -104,6 +104,14 @@ ref class InClassMyEnum {
     D = EnumList::D
   };
 };
+// global enum from legecy c++ define (out of class)
+public
+enum class MyDefine {
+  A = DEF_BIN_A,
+  B = DEF_BIN_B,
+  C = DEF_BIN_C,
+  D = DEF_BIN_D
+};
 }  // namespace LegacyCpp2DotNetAssemblyDll
 
 // Wrapper class for MyStringChar
