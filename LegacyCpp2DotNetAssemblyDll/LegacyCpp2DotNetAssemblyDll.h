@@ -86,11 +86,31 @@ ref class CArrayToolsWrapper {
 // Wrapper class for EnumList
 namespace LegacyCpp2DotNetAssemblyDll {
 public
+// global enum from legecy c++ enum (out of class)
 enum class MyEnum {
   A = EnumList::A,
   B = EnumList::B,
   C = EnumList::C,
   D = EnumList::D
+};
+// in class enum from legecy c++ enum (in class)
+public
+ref class InClassMyEnum {
+ public:
+  enum class MyEnum {
+    A = EnumList::A,
+    B = EnumList::B,
+    C = EnumList::C,
+    D = EnumList::D
+  };
+};
+// global enum from legecy c++ define (out of class)
+public
+enum class MyDefine {
+  A = DEF_BIN_A,
+  B = DEF_BIN_B,
+  C = DEF_BIN_C,
+  D = DEF_BIN_D
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll
 

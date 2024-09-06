@@ -102,10 +102,26 @@ namespace CSharpApp
             label2.Text = "MyEnum.D =          " + int_d.ToString() + ", " + hex_d.ToString() + ", " + bin_d.ToString();
 
             // bit operation of B and D, and print int/hex/bin value
-            MyEnum EnumBitOperation = (MyEnum.B | MyEnum.D);
+            MyEnum EnumBitOperation = MyEnum.B | MyEnum.D;
             string hex_bd = "0x" + Convert.ToString((long)EnumBitOperation, 16).PadLeft(4, '0');
             string bin_bd = "0b" + Convert.ToString((long)EnumBitOperation, 2).PadLeft(4, '0');
             label3.Text = "MyEnum .B | .D = " + EnumBitOperation.ToString() + ", " + hex_bd.ToString() + ", " + bin_bd.ToString();
+
+            #region
+            // use c++ legacy enum (in class enum) 
+            InClassMyEnum.MyEnum in_class_enum_A = InClassMyEnum.MyEnum.A;
+            InClassMyEnum.MyEnum in_class_enum_B = InClassMyEnum.MyEnum.B;
+            InClassMyEnum.MyEnum in_class_enum_C = InClassMyEnum.MyEnum.C;
+            InClassMyEnum.MyEnum in_class_enum_D = InClassMyEnum.MyEnum.D;
+            InClassMyEnum.MyEnum in_class_enum_ALL = in_class_enum_ALL = in_class_enum_A | in_class_enum_B | in_class_enum_C | in_class_enum_D;
+
+            // use c++ legacy define
+            MyDefine global_define_A = MyDefine.A;
+            MyDefine global_define_B = MyDefine.B;
+            MyDefine global_define_C = MyDefine.C;
+            MyDefine global_define_D = MyDefine.D;
+            MyDefine global_define_ALL = global_define_A | global_define_B | global_define_C | global_define_D;
+            #endregion
         }
 
         private void button7_Click(object sender, EventArgs e)
