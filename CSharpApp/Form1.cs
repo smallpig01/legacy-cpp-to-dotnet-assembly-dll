@@ -106,6 +106,15 @@ namespace CSharpApp
             string hex_bd = "0x" + Convert.ToString((long)EnumBitOperation, 16).PadLeft(4, '0');
             string bin_bd = "0b" + Convert.ToString((long)EnumBitOperation, 2).PadLeft(4, '0');
             label3.Text = "MyEnum .B | .D = " + EnumBitOperation.ToString() + ", " + hex_bd.ToString() + ", " + bin_bd.ToString();
+
+            #region 不應被清除的程式碼
+            // use c++ legacy enum (in class enum) 
+            InClassMyEnum.MyEnum in_class_enum_A = InClassMyEnum.MyEnum.A;
+            InClassMyEnum.MyEnum in_class_enum_B = InClassMyEnum.MyEnum.B;
+            InClassMyEnum.MyEnum in_class_enum_C = InClassMyEnum.MyEnum.C;
+            InClassMyEnum.MyEnum in_class_enum_D = InClassMyEnum.MyEnum.D;
+            InClassMyEnum.MyEnum in_class_enum_ALL = in_class_enum_ALL = in_class_enum_A | in_class_enum_B | in_class_enum_C | in_class_enum_D;
+            #endregion
         }
 
         private void button7_Click(object sender, EventArgs e)
