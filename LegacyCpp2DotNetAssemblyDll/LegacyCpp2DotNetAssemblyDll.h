@@ -140,3 +140,43 @@ ref class MyStdVectorWrapper {
   static array<int> ^ RevertVector(array<int> ^ cs_arr);
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll
+
+// Wrapper struct for global and in-class struct
+namespace LegacyCpp2DotNetAssemblyDll {
+
+// use ref keyword to create a global reference type struct
+public
+ref struct MyGlobalRefStruct {
+  int i = 1;
+  float f = 1.1f;
+  System::String ^ s = "MyGlobalRefStruct";
+};
+
+// use value keyword to create a global value type (
+public
+value struct MyGlobalValueStruct {
+  int i /*=2*/;       // cant init value here due to value struct type
+  float f /*=2.2f*/;  // cant init value here due to value struct type
+  // cant init value here due to value struct type
+  System::String ^ s /* = "MyGlobalValueStruct"*/;
+};
+
+public
+ref class MyStructClass {
+  // use ref keyword to create a in class reference type struct
+ public:
+  ref struct MyInClassRefStruct {
+    int i = 3;
+    float f = 3.3f;
+    System::String ^ s = "MyInClassRefStruct";
+  };
+  // use value keyword to create a in class value type struct
+  value struct MyInClassVlaueStruct {
+   public:
+    int i /* = 4*/;       // cant init value here due to value struct type
+    float f /* = 4.4f*/;  // cant init value here due to value struct type
+    // cant init value here due to value struct type
+    System::String ^ s /* = "MyInClassVlaueStruct"*/;
+  };
+};
+}  // namespace LegacyCpp2DotNetAssemblyDll

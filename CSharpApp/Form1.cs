@@ -157,5 +157,44 @@ namespace CSharpApp
             dst_array[0] = 2; dst_array[1] = 2; dst_array[2] = 2; dst_array[3] = 2; dst_array[4] = 2;
             label3.Text = "src_arr = " + string.Join(", ", src_array) + "; dst_arr = " + string.Join(", ", dst_array);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // use MyGlobalRefStruct to create a object and use default value without set value
+            MyGlobalRefStruct myGlobalRefStruct = new MyGlobalRefStruct();
+            
+            // use MyGlobalValueStruct to create a object but if no set value, IDE will show error
+            MyGlobalValueStruct myGlobalValueStruct; // do not need to use new to create a object
+            myGlobalValueStruct.i = 2;
+            myGlobalValueStruct.f = 2.2f;
+            myGlobalValueStruct.s = "MyGlobalValueStruct";
+
+            // use MyStructClass.MyInClassRefStruct to create a object and use default value without set value
+            MyStructClass.MyInClassRefStruct myInClassRefStruct = new MyStructClass.MyInClassRefStruct();
+
+            // use MyStructClass.MyInClassValueStruct to create a object but if no set value, IDE will show error
+            MyStructClass.MyInClassVlaueStruct myInClassVlaueStruct; // do not need to use new to create a object
+            myInClassVlaueStruct.i = 4;
+            myInClassVlaueStruct.f = 4.4f;
+            myInClassVlaueStruct.s = "MyInClassVlaueStruct";
+
+            // the differance of default operation= between `ref struct` and `value struct`
+            // `ref struct`: pointer to the same memory, so if change one object, the other object will be changed
+            MyGlobalRefStruct A = new MyGlobalRefStruct();
+            A.i = 1; A.f=1.1f; A.s = "A";
+            MyGlobalRefStruct B = new MyGlobalRefStruct();
+            B.i = 2; B.f = 2.2f; B.s = "B";
+            B = A;
+            A.i = 11; A.f = 11.11f; A.s = "newA";
+            label1.Text = A.s + ": " + A.i.ToString() + ", " + A.f.ToString() + ", " + B.s + ", " + B.i.ToString() + ", " + B.f.ToString();
+            // `value struct`: copy the value to the other object, so if change one object, the other object will not be changed
+            MyGlobalValueStruct C;
+            C.i = 3; C.f = 3.3f; C.s = "C";
+            MyGlobalValueStruct D;
+            D.i = 4; D.f = 4.4f; D.s = "D";
+            D = C;
+            C.i = 33; C.f = 33.33f; C.s = "newC";
+            label2.Text = C.s + ": " + C.i.ToString() + ", " + C.f.ToString() + ", " + D.s + ", " + D.i.ToString() + ", " + D.f.ToString();
+         }
     }
 }

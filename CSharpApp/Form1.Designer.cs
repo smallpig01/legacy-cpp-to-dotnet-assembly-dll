@@ -39,6 +39,7 @@
             button6 = new Button();
             button7 = new Button();
             button8 = new Button();
+            button9 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -149,11 +150,23 @@
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
             // 
+            // button9
+            // 
+            button9.Location = new Point(30, 612);
+            button9.Name = "button9";
+            button9.Size = new Size(553, 46);
+            button9.TabIndex = 11;
+            button9.Text = "demo9: c++struct -> ref/value struct";
+            button9.TextAlign = ContentAlignment.MiddleLeft;
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(14F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(610, 636);
+            ClientSize = new Size(610, 700);
+            Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
@@ -185,5 +198,6 @@
         private Button button6;
         private Button button7;
         private Button button8;
+        private Button button9;
     }
 }
