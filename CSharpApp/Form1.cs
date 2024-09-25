@@ -195,6 +195,32 @@ namespace CSharpApp
             D = C;
             C.i = 33; C.f = 33.33f; C.s = "newC";
             label2.Text = C.s + ": " + C.i.ToString() + ", " + C.f.ToString() + ", " + D.s + ", " + D.i.ToString() + ", " + D.f.ToString();
-         }
+        }
+
+        static int num_button10_click_times = 0;
+        private void button10_Click(object sender, EventArgs e)
+        {
+            ++num_button10_click_times;
+            // best way to use the object is to use the using() to create a object
+            using (MyDynamicPointerWrapper myDynamicPointerWrapper1 = new())
+            using (MyDynamicPointerWrapper myDynamicPointerWrapper2 = new())
+            {
+                // here can use the 1 and 2 object to do something
+                // and do not need to call Dispose() to release the memory
+            }
+
+            // the second way to use the object is to create a object and call Dispose() to release the memory
+            if (true)
+            {
+                MyDynamicPointerWrapper myDynamicPointerWrapper3 = new();
+                myDynamicPointerWrapper3.Dispose(); // user should be call Dispose() to release the memory
+            }
+
+            // if user do not call Dispose(), the memory will not be released until the gc::Collect() is called or the auto gc is triggered
+            MyDynamicPointerWrapper myDynamicPointerWrapper4 = new();
+            // when button10 click 10 times, manually call GC.Collect() to release the memory
+            if (num_button10_click_times%10 == 0) 
+                GC.Collect(); // not recommend to call GC.Collect() to release the memory due to the performance issue
+        }
     }
 }
