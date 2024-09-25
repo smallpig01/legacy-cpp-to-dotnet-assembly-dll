@@ -122,6 +122,7 @@
     <ClInclude Include="..\LegacyCppSrc\ClsA\ClsA.h" />
     <ClInclude Include="..\LegacyCppSrc\ClsB\ClsB.h" />
     <ClInclude Include="..\LegacyCppSrc\EnumList\EnumList.h" />
+    <ClInclude Include="..\LegacyCppSrc\MyDynamicPointer\MyDynamicPointer.h" />
     <ClInclude Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.h" />
     <ClInclude Include="..\LegacyCppSrc\MyStdVector\MyStdVector.h" />
     <ClInclude Include="..\LegacyCppSrc\MyStringChar\MyStringChar.h" />
@@ -133,6 +134,7 @@
     <ClCompile Include="..\LegacyCppSrc\ClsA\ClsA.cpp" />
     <ClCompile Include="..\LegacyCppSrc\ClsB\ClsB.cpp" />
     <ClCompile Include="..\LegacyCppSrc\EnumList\EnumList.cpp" />
+    <ClCompile Include="..\LegacyCppSrc\MyDynamicPointer\MyDynamicPointer.cpp" />
     <ClCompile Include="..\LegacyCppSrc\MyLegacyClass\MyLegacyClass.cpp" />
     <ClCompile Include="..\LegacyCppSrc\MyStdVector\MyStdVector.cpp" />
     <ClCompile Include="..\LegacyCppSrc\MyStringChar\MyStringChar.cpp" />

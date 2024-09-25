@@ -42,6 +42,9 @@
     <ClInclude Include="..\LegacyCppSrc\MyStdVector\MyStdVector.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="..\LegacyCppSrc\MyDynamicPointer\MyDynamicPointer.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LegacyCpp2DotNetAssemblyDll.cpp">
@@ -69,6 +72,9 @@
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="..\LegacyCppSrc\MyStdVector\MyStdVector.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LegacyCppSrc\MyDynamicPointer\MyDynamicPointer.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>

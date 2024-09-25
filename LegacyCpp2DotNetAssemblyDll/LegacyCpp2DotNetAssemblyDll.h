@@ -11,6 +11,7 @@ using namespace msclr::interop;
 #include "../LegacyCppSrc/ClsA/ClsA.h"
 #include "../LegacyCppSrc/ClsB/ClsB.h"
 #include "../LegacyCppSrc/EnumList/EnumList.h"
+#include "../LegacyCppSrc/MyDynamicPointer/MyDynamicPointer.h"
 #include "../LegacyCppSrc/MyLegacyClass/MyLegacyClass.h"
 #include "../LegacyCppSrc/MyStdVector/MyStdVector.h"
 #include "../LegacyCppSrc/MyStringChar/MyStringChar.h"
@@ -178,5 +179,29 @@ ref class MyStructClass {
     // cant init value here due to value struct type
     System::String ^ s /* = "MyInClassVlaueStruct"*/;
   };
+};
+}  // namespace LegacyCpp2DotNetAssemblyDll
+
+// Wrapper class for MyDynamicPointer
+namespace LegacyCpp2DotNetAssemblyDll {
+public
+ref class MyDynamicPointerWrapper {
+ public:
+  // constructor - call by new MyDynamicPointerWrapper();
+  MyDynamicPointerWrapper() { myDynamicPointer_ = new MyDynamicPointer(); }
+  // `~`Destructor - call by Dispose();
+  ~MyDynamicPointerWrapper() {
+    this->!MyDynamicPointerWrapper();  // call !finalizer preven code-duplicat
+    GC::SuppressFinalize(this);        // prevent call finalizer by gc twice
+  };
+  // `!`Finalizer - call by GC.Collect();
+  !MyDynamicPointerWrapper() {
+    if (myDynamicPointer_ == nullptr) return;
+    delete myDynamicPointer_;
+    myDynamicPointer_ = nullptr;
+  }
+
+ private:
+  MyDynamicPointer* myDynamicPointer_;  // pointer to legacy class
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll
