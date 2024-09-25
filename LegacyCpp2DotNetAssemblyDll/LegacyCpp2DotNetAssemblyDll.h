@@ -29,7 +29,8 @@ ref class MyLegacyClassWrapper {
  public:
   MyLegacyClassWrapper();
   MyLegacyClassWrapper(MyLegacyClass* myLegacyClass);
-  ~MyLegacyClassWrapper();
+  ~MyLegacyClassWrapper();  // destructor, call by Dispose()
+  !MyLegacyClassWrapper();  // finalizer, call by GC.Collect()
   MyLegacyClassWrapper(int a, int b);
   MyLegacyClassWrapper ^ Set(MyLegacyClassWrapper ^ myLegacyClass);
   MyLegacyClassWrapper ^ Get(MyLegacyClassWrapper ^ myLegacyClass);
@@ -49,7 +50,8 @@ ref class ClsAWrapper {
   ClsA* clsA_;  // pointer to legacy class
   ClsAWrapper();
   ClsAWrapper(ClsA* clsA);
-  ~ClsAWrapper();
+  ~ClsAWrapper();  // destructor, call by Dispose()
+  !ClsAWrapper();  // finalizer, call by GC.Collect()
   ClsBWrapper ^ Foo(ClsBWrapper ^ b);
   int GetValue();
   void SetValue(int value);
@@ -63,7 +65,8 @@ ref class ClsBWrapper {
  public:
   ClsBWrapper();
   ClsBWrapper(ClsB* clsB);
-  ~ClsBWrapper();
+  ~ClsBWrapper();  // destructor, call by Dispose()
+  !ClsBWrapper();  // finalizer, call by GC.Collect()
   ClsAWrapper ^ Foo(ClsAWrapper ^ a);
   int GetValue();
   void SetValue(int value);
@@ -122,7 +125,8 @@ ref class MyStringCharWrapper {
  public:
   MyStringCharWrapper();
   MyStringCharWrapper(MyStringChar* my_string_char);
-  ~MyStringCharWrapper();
+  ~MyStringCharWrapper();  // destructor, call by Dispose()
+  !MyStringCharWrapper();  // finalizer, call by GC.Collect()
   void SetDataString(String ^ str);
   void SetDataChar(String ^ str);
   String ^ GetDataString();

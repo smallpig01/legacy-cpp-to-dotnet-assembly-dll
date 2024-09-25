@@ -12,7 +12,14 @@ LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::MyLegacyClassWrapper(
 }
 
 LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::~MyLegacyClassWrapper() {
+  this->!MyLegacyClassWrapper();
+  GC::SuppressFinalize(this);
+}
+
+LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::!MyLegacyClassWrapper() {
+  if (myLegacyClass_ == nullptr) return;
   delete myLegacyClass_;
+  myLegacyClass_ = nullptr;
 }
 
 LegacyCpp2DotNetAssemblyDll::MyLegacyClassWrapper::MyLegacyClassWrapper(int a,
@@ -59,7 +66,16 @@ LegacyCpp2DotNetAssemblyDll::ClsAWrapper::ClsAWrapper(ClsA* clsA) {
   clsA_ = new ClsA(*clsA);
 }
 
-LegacyCpp2DotNetAssemblyDll::ClsAWrapper::~ClsAWrapper() { delete clsA_; }
+LegacyCpp2DotNetAssemblyDll::ClsAWrapper::~ClsAWrapper() {
+  this->!ClsAWrapper();
+  GC::SuppressFinalize(this);
+}
+
+LegacyCpp2DotNetAssemblyDll::ClsAWrapper::!ClsAWrapper() {
+  if (clsA_ == nullptr) return;
+  delete clsA_;
+  clsA_ = nullptr;
+}
 
 LegacyCpp2DotNetAssemblyDll::ClsBWrapper ^
     LegacyCpp2DotNetAssemblyDll::ClsAWrapper::Foo(ClsBWrapper ^ b) {
@@ -91,7 +107,16 @@ LegacyCpp2DotNetAssemblyDll::ClsBWrapper::ClsBWrapper(ClsB* clsB) {
   clsB_ = new ClsB(*clsB);
 }
 
-LegacyCpp2DotNetAssemblyDll::ClsBWrapper::~ClsBWrapper() { delete clsB_; }
+LegacyCpp2DotNetAssemblyDll::ClsBWrapper::~ClsBWrapper() {
+  this->!ClsBWrapper();
+  GC::SuppressFinalize(this);
+}
+
+LegacyCpp2DotNetAssemblyDll::ClsBWrapper::!ClsBWrapper() {
+  if (clsB_ == nullptr) return;
+  delete clsB_;
+  clsB_ = nullptr;
+}
 
 LegacyCpp2DotNetAssemblyDll::ClsAWrapper ^
     LegacyCpp2DotNetAssemblyDll::ClsBWrapper::Foo(ClsAWrapper ^ a) {
@@ -127,7 +152,14 @@ LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::MyStringCharWrapper(
 }
 
 LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::~MyStringCharWrapper() {
+  this->!MyStringCharWrapper();
+  GC::SuppressFinalize(this);
+}
+
+LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::!MyStringCharWrapper() {
+  if (my_string_char_ == nullptr) return;
   delete my_string_char_;
+  my_string_char_ = nullptr;
 }
 
 void LegacyCpp2DotNetAssemblyDll::MyStringCharWrapper::SetDataString(String ^
