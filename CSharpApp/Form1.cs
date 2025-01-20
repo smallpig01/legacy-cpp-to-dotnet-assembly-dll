@@ -222,5 +222,20 @@ namespace CSharpApp
             if (num_button10_click_times%10 == 0) 
                 GC.Collect(); // not recommend to call GC.Collect() to release the memory due to the performance issue
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            // create a list<> and revert it
+            List<int> src = new List<int> { 10, 20, 30, 40, 50, 60 };
+            List<int> dst = MyStdVectorWrapper.RevertVector(src);
+
+            // print result
+            label1.Text = "";
+            for (int i = 0; i < src.Count; ++i)
+                label1.Text += src[i].ToString() + ", ";
+            label2.Text = "";
+            for (int i = 0; i < dst.Count; ++i)
+                label2.Text += dst[i].ToString() + ", ";
+        }
     }
 }

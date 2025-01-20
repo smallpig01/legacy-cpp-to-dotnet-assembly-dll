@@ -224,3 +224,23 @@ array<int> ^
 
   return result;
 }
+
+List<int> ^
+    LegacyCpp2DotNetAssemblyDll::MyStdVectorWrapper::RevertVector(List<int> ^
+                                                                  list) {
+  // declare c++ std::vector
+  std::vector<int> src_vect, dst_vect;
+
+  // copy src data List<int>^ to std::vector<int>
+  src_vect.reserve(list->Count);
+  for each (int i in list) src_vect.push_back(i);
+
+  // call the legacy class method
+  dst_vect = MyStdVector::RevertVector(src_vect);
+
+  // copy dst data std::vector<int> to List<int>^
+  List<int> ^ dst = gcnew List<int>(dst_vect.size());
+  for each (int i in dst_vect) dst->Add(i);
+
+  return dst;
+}

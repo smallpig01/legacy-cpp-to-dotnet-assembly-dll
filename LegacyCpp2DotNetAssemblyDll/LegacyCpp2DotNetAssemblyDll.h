@@ -4,6 +4,7 @@
 #include <msclr/marshal_cppstd.h>
 
 using namespace System;
+using namespace System::Collections::Generic;
 using namespace System::Runtime::InteropServices;
 using namespace msclr::interop;
 
@@ -143,6 +144,7 @@ public
 ref class MyStdVectorWrapper {
  public:
   static array<int> ^ RevertVector(array<int> ^ cs_arr);
+  static List<int> ^ RevertVector(List<int> ^ list);
 };
 }  // namespace LegacyCpp2DotNetAssemblyDll
 
